@@ -1,12 +1,15 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { AiOutlineUserAdd, AiOutlineFileText } from "react-icons/ai";
-import { FaNotesMedical, FaUser, FaIdCard, FaVenusMars, FaCalendarAlt, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { AiOutlineUserAdd} from "react-icons/ai";
+import { FaUser, FaIdCard, FaVenusMars, FaCalendarAlt, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { createPatient } from "../services/patientService";
 
 const RegisterPatient = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
-    abhaNumber: "",
+    abha_number: "",
     gender: "Male",
     dob: "",
     phone: "",
@@ -22,9 +25,17 @@ const RegisterPatient = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    toast.success("Patient Details saved successfully");
+    
+    try {
+      await createPatient(formData);
+      toast.success("Patient Details saved successfully");
+      navigate("/patient-list");
+    } catch (error) {
+      console.error("Error registering patient:", error);
+      alert("Failed to register patient.");
+    }
     console.log("Form Data Submitted:", formData);
   };
 
@@ -58,8 +69,8 @@ const RegisterPatient = () => {
               </label>
               <input
                 type="text"
-                name="abhaNumber"
-                value={formData.abhaNumber}
+                name="abha_number"
+                value={formData.abha_number}
                 onChange={handleChange}
                 className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required

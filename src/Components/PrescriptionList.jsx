@@ -1,71 +1,97 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { FaNotesMedical, FaTrash, FaEdit, FaSave, FaTimes } from "react-icons/fa";
+import {  FaTrash, FaEdit, FaSave, FaTimes } from "react-icons/fa";
 import { MdOutlineList } from "react-icons/md";
-
-const initialPrescriptions = [
-  { patientId: "P001", opdVisitId: "OPD123", medication: "Paracetamol", dosage: "500mg", frequency: "Twice a day", duration: "5 days" },
-  { patientId: "P002", opdVisitId: "OPD456", medication: "Ibuprofen", dosage: "200mg", frequency: "Thrice a day", duration: "7 days" },
-  { patientId: "P003", opdVisitId: "OPD789", medication: "Amoxicillin", dosage: "250mg", frequency: "Once a day", duration: "10 days" },
-];
+import { getPrescriptions, updatePrescription, deletePrescription} from "../services/prescriptionService"; // Import API functions
 
 const PrescriptionList = () => {
-  const [prescriptions, setPrescriptions] = useState(initialPrescriptions);
+  const [prescriptions, setPrescriptions] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [formData, setFormData] = useState(null);
   const [deleteIndex, setDeleteIndex] = useState(null);
 
-  const handleEdit = (index) => {
-    setEditIndex(index);
-    setFormData({ ...prescriptions[index] });
+  // Fetch prescriptions from the backend when the component is mounted
+  useEffect(() => {
+    fetchPrescriptions();
+  }, []);
+
+  const fetchPrescriptions = async () => {
+    try {
+      const response = await getPrescriptions();
+      setPrescriptions(response.data); // Update state with fetched prescriptions
+    } catch (error) {
+      console.error("Error fetching prescriptions:", error);
+    }
   };
 
+  // Handle edit operation
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setFormData({ ...prescriptions[index] }); // Set form data with prescription details
+  };
+
+  // Handle input field changes while editing
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    const updatedPrescriptions = [...prescriptions];
-    updatedPrescriptions[editIndex] = formData;
-    setPrescriptions(updatedPrescriptions);
-    setEditIndex(null);
-    toast.success("Prescription updated successfully!");
+  // Handle save after editing
+  const handleSave = async () => {
+    try {
+      await updatePrescription(prescriptions[editIndex].id, formData); // Update the prescription using the API
+      const updatedPrescriptions = [...prescriptions];
+      updatedPrescriptions[editIndex] = formData; // Update the state with the new prescription data
+      setPrescriptions(updatedPrescriptions);
+      setEditIndex(null);
+      toast.success("Prescription updated successfully!");
+    } catch (error) {
+      console.error("Error saving prescription:", error);
+      toast.error("Failed to update prescription");
+    }
   };
 
+  // Handle cancel edit operation
   const handleCancel = () => {
     setEditIndex(null);
     toast.success("Edit canceled");
   };
 
-  const handleDelete = () => {
-    setPrescriptions(prescriptions.filter((_, i) => i !== deleteIndex));
-    toast.success("Prescription deleted successfully!");
-    setDeleteIndex(null);
+  // Handle delete operation
+  const handleDelete = async () => {
+    try {
+      await deletePrescription(prescriptions[deleteIndex].id); // Delete the prescription from the backend
+      setPrescriptions(prescriptions.filter((_, i) => i !== deleteIndex)); // Remove from the list in the state
+      toast.success("Prescription deleted successfully!");
+      setDeleteIndex(null);
+    } catch (error) {
+      console.error("Error deleting prescription:", error);
+      toast.error("Failed to delete prescription");
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="w-full max-w-6xl bg-white shadow-2xl rounded-3xl border border-gray-300 p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center  text-gray-700 flex items-center justify-center gap-2">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-700 flex items-center justify-center gap-2">
           <MdOutlineList className="text-3xl" /> Prescription List
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse shadow-md rounded-lg text-gray-900 bg-white">
             <thead className="bg-green-600 text-white w-full">
               <tr>
+                <th className="p-3">S.No</th>
                 <th className="p-3">Patient ID</th>
                 <th className="p-3">OPD Visit ID</th>
                 <th className="p-3">Medication</th>
                 <th className="p-3">Dosage</th>
                 <th className="p-3">Frequency</th>
-                <th className="p-3">Duration</th>
-                <th className="p-3 text-center">Actions</th>
+                <th className="p-3 text-center">Duration</th>
               </tr>
             </thead>
             <tbody>
               {prescriptions.map((prescription, index) => (
-                <tr key={index} className="hover:text-green-600 border-b hover:bg-gray-100 transition">
+                <tr key={index} className="hover:text-green-600 text-center border-b hover:bg-gray-100 transition">
                   {Object.values(prescription).map((value, i) => (
                     <td key={i} className="p-3">{value}</td>
                   ))}
@@ -147,3 +173,4 @@ const PrescriptionList = () => {
 };
 
 export default PrescriptionList;
+

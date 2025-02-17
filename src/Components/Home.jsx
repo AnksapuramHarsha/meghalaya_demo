@@ -1,8 +1,8 @@
-import React from "react";
+
 
 export default function MeghalayaHealthcare() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-lightgreen-400 to-lightgreen-200 p-6 flex justify-center items-center">
+    <div className="mt-20 min-h-screen bg-gradient-to-r from-lightgreen-400 to-lightgreen-200 p-6 flex justify-center items-center">
       <div className="max-w-4xl text-center">
         <h1 className="text-5xl font-extrabold text-gray-800 mb-6 drop-shadow-lg">Meghalaya Health Welfare</h1>
         <p className="text-lg text-gray-700 mb-8 shadow-md p-4 rounded-lg  bg-opacity-80">

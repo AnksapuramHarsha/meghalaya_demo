@@ -41,7 +41,7 @@ const branches = [
 
 export default function HospitalBranches() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-lightgreen-400 to-lightgreen-200 p-6 flex justify-center items-center">
+    <div className="mt-20 min-h-screen bg-gradient-to-r from-lightgreen-400 to-lightgreen-200 p-6 flex justify-center items-center">
       <div className="max-w-4xl w-full text-center">
         <h1 className="text-5xl font-extrabold text-gray-800 mb-6 drop-shadow-lg">Hospital Branches</h1>
         <div className="grid md:grid-cols-3 gap-6">
