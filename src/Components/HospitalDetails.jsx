@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { FaHospital, FaUserMd, FaPills, FaAmbulance } from "react-icons/fa";
 import { MdMedicalServices } from "react-icons/md";
 

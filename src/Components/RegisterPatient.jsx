@@ -58,7 +58,7 @@ const RegisterPatient = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
             </div>
@@ -72,7 +72,7 @@ const RegisterPatient = () => {
                 name="abha_number"
                 value={formData.abha_number}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
             </div>
@@ -85,7 +85,7 @@ const RegisterPatient = () => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -102,7 +102,7 @@ const RegisterPatient = () => {
                 name="dob"
                 value={formData.dob}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
             </div>
@@ -116,7 +116,7 @@ const RegisterPatient = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
             </div>
@@ -130,7 +130,7 @@ const RegisterPatient = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
             </div>
@@ -144,7 +144,7 @@ const RegisterPatient = () => {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
+              className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
               required
             />
           </div>

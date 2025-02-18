@@ -83,7 +83,7 @@ const RegisterPrescription = () => {
                 name="patient_id"
                 value={formData.patient_id}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               >
                 <option value="" disabled>Select Patient</option>
@@ -106,7 +106,7 @@ const RegisterPrescription = () => {
                 name="medication"
                 value={formData.medication}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.medication && <p className="text-red-500 text-sm">{errors.medication}</p>}
@@ -122,7 +122,7 @@ const RegisterPrescription = () => {
                 name="dosage"
                 value={formData.dosage}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.dosage && <p className="text-red-500 text-sm">{errors.dosage}</p>}
@@ -138,7 +138,7 @@ const RegisterPrescription = () => {
                 name="frequency"
                 value={formData.frequency}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.frequency && <p className="text-red-500 text-sm">{errors.frequency}</p>}
@@ -154,7 +154,7 @@ const RegisterPrescription = () => {
                 name="opd_id"
                 value={formData.opd_id}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.opd_id && <p className="text-red-500 text-sm">{errors.opd_id}</p>}
@@ -170,7 +170,7 @@ const RegisterPrescription = () => {
                 name="duration"
                 value={formData.duration}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.duration && <p className="text-red-500 text-sm">{errors.duration}</p>}

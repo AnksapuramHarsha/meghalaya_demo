@@ -10,10 +10,10 @@ import PrescriptionList from "./Components/PrescriptionList";
 import Home from "./Components/Home";
 import Login from "./Components/LogInPage";
 import HospitalBranches from "./Components/HospitalBranches";
-import PrivateRoute from "./Components/PrivateRoute";
+// import PrivateRoute from "./Components/PrivateRoute";
 import { Toaster } from "react-hot-toast";
 
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");

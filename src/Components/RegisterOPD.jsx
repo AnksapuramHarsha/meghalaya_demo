@@ -1,122 +1,3 @@
-// import { useState } from "react";
-// import toast from "react-hot-toast";
-// import { MdOutlineLocalHospital } from "react-icons/md";
-// import { FaUserMd, FaClipboardList, FaStethoscope } from "react-icons/fa";
-// import { createOPDVisit } from "../services/opdService";
-// import { useNavigate } from "react-router-dom";
-
-// const PatientForm = () => {
-//   const navigate=useNavigate()
-//   const [formData, setFormData] = useState({
-//     patient: "",
-//     doctor: "",
-//     symptoms: "",
-//     diagnosis: "",
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async(e) => {
-//     e.preventDefault();
-//     // toast.success("Patient details saved successfully");
-//     // console.log("Patient Form Submitted:", formData);
-//     try {
-//       await createOPDVisit(formData);
-//       alert("OPD Visit Registered!");
-//       navigate("/register-opd");
-//     } catch (error) {
-//       console.error("Error registering OPD visit:", error);
-//       alert("Failed to register OPD visit.");
-//     }
-//   };
-
-//   return (
-//     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-//       <div className="w-full max-w-3xl p-8 bg-white shadow-2xl rounded-2xl">
-//         <h2 className="text-3xl font-bold text-gray-700 text-center mb-6 flex items-center justify-center gap-2">
-//           <MdOutlineLocalHospital className="text-3xl text-green-600" /> Patient Diagnosis
-//         </h2>
-
-//         <form onSubmit={handleSubmit} className="space-y-6">
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//             <div>
-//               <label className="block text-gray-600 font-medium flex items-center gap-2">
-//                 <MdOutlineLocalHospital className="text-lg text-green-600" /> Select Patient
-//               </label>
-//               <select
-//                 name="patient"
-//                 value={formData.patient}
-//                 onChange={handleChange}
-//                 className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
-//                 required
-//               >
-//                 <option value="" disabled>Select Patient</option>
-//                 <option value="Akash">Akash</option>
-//                 <option value="Abhilash">Abhilash</option>
-//               </select>
-//             </div>
-
-//             <div>
-//               <label className="block text-gray-600 font-medium flex items-center gap-2">
-//                 <FaUserMd className="text-green-600" /> Doctors Name
-//               </label>
-//               <input
-//                 type="text"
-//                 name="doctor"
-//                 value={formData.doctor}
-//                 onChange={handleChange}
-//                 className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label className="block text-gray-600 font-medium flex items-center gap-2">
-//                 <FaClipboardList className="text-green-600" /> Symptoms
-//               </label>
-//               <textarea
-//                 name="symptoms"
-//                 value={formData.symptoms}
-//                 onChange={handleChange}
-//                 className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label className="block text-gray-600 font-medium flex items-center gap-2">
-//                 <FaStethoscope className="text-green-600" /> Diagnosis
-//               </label>
-//               <textarea
-//                 name="diagnosis"
-//                 value={formData.diagnosis}
-//                 onChange={handleChange}
-//                 className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
-//                 required
-//               />
-//             </div>
-//           </div>
-
-//           <button
-//             type="submit"
-//             className="w-full p-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
-//           >
-//             Submit
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PatientForm;
-// =================================================================================
 import { useState, useEffect, useCallback } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineLocalHospital } from "react-icons/md";
@@ -197,7 +78,7 @@ const PatientForm = () => {
                 name="patient_id"
                 value={formData.patient_id}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               >
                 <option value="" disabled>Select Patient</option>
@@ -217,7 +98,7 @@ const PatientForm = () => {
                 name="doctor_name"
                 value={formData.doctor_name}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition"
                 required
               />
               {errors.doctor_name && <p className="text-red-500 text-sm">{errors.doctor_name}</p>}
@@ -231,7 +112,7 @@ const PatientForm = () => {
                 name="symptoms"
                 value={formData.symptoms}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
                 required
               />
               {errors.symptoms && <p className="text-red-500 text-sm">{errors.symptoms}</p>}
@@ -245,7 +126,7 @@ const PatientForm = () => {
                 name="diagnosis"
                 value={formData.diagnosis}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
+                className="w-full p-3 rounded-lg bg-gray-100 border border-gray-400 focus:ring-2 focus:ring-green-400 outline-none transition resize-none"
                 required
               />
               {errors.diagnosis && <p className="text-red-500 text-sm">{errors.diagnosis}</p>}

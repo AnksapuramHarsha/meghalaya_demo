@@ -1,7 +1,7 @@
 import axios from "axios";
+import { API_CONFIG } from "../config";
 
-const API_URL = "http://localhost:5000/api/prescriptions";
-// const API_URL = "http://54.169.168.155:5000/api/prescriptions";
+const API_URL = `http://${API_CONFIG.ipAddress}:${API_CONFIG.port}/api/prescriptions`;
 
 // Get all prescriptions
 export const getPrescriptions = async () => {
