@@ -87,6 +87,7 @@ const PrescriptionList = () => {
                 <th className="p-3">Dosage</th>
                 <th className="p-3">Frequency</th>
                 <th className="p-3 text-center">Duration</th>
+                <th className="p-3 text-center">Action</th>
               </tr>
             </thead>
             <tbody>
